@@ -10,6 +10,7 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity implements SensorEventListener {
@@ -21,6 +22,11 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     private TextView textAzimuth;
     private TextView textPitch;
     private TextView textRoll;
+    private ImageView spotTop;
+    private ImageView spotRight;
+    private ImageView spotLeft;
+    private ImageView spotBottom;
+    private static final float VALUE_DRIFT = 0.05f;
 
     private float[] accelerometerData = new float[3];
     private float[] magnetometerData = new float[3];
@@ -30,11 +36,15 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
         textAzimuth = findViewById(R.id.value_azimuth);
         textPitch = findViewById(R.id.value_pitch);
         textRoll = findViewById(R.id.value_roll);
+        spotTop = findViewById(R.id.spot_top);
+        spotRight = findViewById(R.id.spot_right);
+        spotLeft = findViewById(R.id.spot_left);
+        spotBottom = findViewById(R.id.spot_bottom);
 
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         sensorAccelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
@@ -90,6 +100,29 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         textAzimuth.setText(getResources().getString(R.string.value_format, azimuth));
         textPitch.setText(getResources().getString(R.string.value_format, pitch));
         textRoll.setText(getResources().getString(R.string.value_format, roll));
+
+        if (Math.abs(pitch) < VALUE_DRIFT) {
+            pitch = 0;
+        }
+        if (Math.abs(roll) < VALUE_DRIFT) {
+            roll = 0;
+        }
+
+        spotTop.setAlpha(0f);
+        spotRight.setAlpha(0f);
+        spotLeft.setAlpha(0f);
+        spotBottom.setAlpha(0f);
+
+        if (pitch > 0) {
+            spotBottom.setAlpha(pitch);
+        } else {
+            spotTop.setAlpha(pitch);
+        }
+        if (roll > 0) {
+            spotLeft.setAlpha(roll);
+        } else {
+            spotRight.setAlpha(roll);
+        }
     }
 
     @Override
