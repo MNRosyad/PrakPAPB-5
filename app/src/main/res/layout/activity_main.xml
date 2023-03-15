@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="8dp"
+    tools:context=".MainActivity">
+
+    <RelativeLayout
+        android:id="@+id/label_group"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp">
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/label_azimuth"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/label_azimuth"
+        android:textStyle="bold"
+        android:layout_below="@+id/label_group"/>
+    <TextView
+        android:id="@+id/label_pitch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/label_pitch"
+        android:textStyle="bold"
+        android:layout_below="@+id/label_azimuth"/>
+    <TextView
+        android:id="@+id/label_roll"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/label_roll"
+        android:textStyle="bold"
+        android:layout_below="@+id/label_pitch"/>
+
+    <TextView
+        android:id="@+id/value_azimuth"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="@string/value_format"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:layout_below="@+id/label_group"
+        android:layout_toEndOf="@id/label_azimuth"/>
+    <TextView
+        android:id="@+id/value_pitch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="@string/value_format"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:layout_below="@id/label_azimuth"
+        android:layout_toEndOf="@id/label_pitch"/>
+    <TextView
+        android:id="@+id/value_roll"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="@string/value_format"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:layout_below="@id/label_pitch"
+        android:layout_toEndOf="@+id/label_pitch"/>
+
+</RelativeLayout>
