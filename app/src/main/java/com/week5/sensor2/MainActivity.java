@@ -116,12 +116,12 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         if (pitch > 0) {
             spotBottom.setAlpha(pitch);
         } else {
-            spotTop.setAlpha(pitch);
+            spotTop.setAlpha(Math.abs(pitch));
         }
         if (roll > 0) {
             spotLeft.setAlpha(roll);
         } else {
-            spotRight.setAlpha(roll);
+            spotRight.setAlpha(Math.abs(roll));
         }
     }
 
