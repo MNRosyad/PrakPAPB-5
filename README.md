@@ -10,4 +10,4 @@ Materi di pertemuan kelima yaitu <strong>Sensor</strong> lanjutan dari pertemuan
 
 ## Video Demonstrasi
 
-Link Video : [Not Ready]()
+Link Video : [Not Ready](https://drive.google.com/file/d/17oapbNvqc20NnDim6wyUEDl22xpyGIDP/view?usp=sharing)
